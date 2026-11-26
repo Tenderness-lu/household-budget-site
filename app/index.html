@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Hearth Ledger — the Marlowe household's November 2026 budget: income, spending, category budgets, savings goals and a month report, kept in one place.">
+<title>Hearth Ledger — Household Budget</title>
+<link rel="stylesheet" href="style.css">
+<script type="module" src="app.js"></script>
+</head>
+<body>
+<header class="topbar">
+  <div class="shell topbar-in">
+    <a class="mark" href="#/"><span class="mark-glyph" aria-hidden="true">◈</span> Hearth Ledger</a>
+    <nav class="ledger-nav" aria-label="Sections">
+      <a href="#/" data-nav="dashboard" class="on">Dashboard</a>
+      <a href="#/transactions" data-nav="transactions">Transactions</a>
+      <a href="#/budgets" data-nav="budgets">Budgets</a>
+      <a href="#/goals" data-nav="goals">Goals</a>
+      <a href="#/reports" data-nav="reports">Reports</a>
+    </nav>
+  </div>
+</header>
+<main class="shell">
+  <p class="household-strip"><strong id="household">The Marlowe Household</strong> · <span id="month-now">November 2026</span> · All figures in US dollars · Ana &amp; Ben Marlowe, with Mia and Leo</p>
+  <div id="app" aria-live="polite"></div>
+</main>
+<footer class="colophon">
+  <div class="shell colophon-in">
+    <p>Hearth Ledger keeps the Marlowe household's books on this device only — nothing is sent anywhere. The numbers below are the family's real November figures; add your own and the whole site follows.</p>
+    <button class="btn quiet small" type="button" data-action="reset-demo">Reset demo data</button>
+  </div>
+</footer>
+</body>
+</html>
