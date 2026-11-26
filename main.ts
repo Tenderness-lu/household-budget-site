@@ -20,6 +20,12 @@ import { buildDossier } from './vendor/makefun-frontend.ts';
 const root = fileURLToPath(new URL('.', import.meta.url));
 const outDir = process.env.MAKEFUN_OUTPUT_DIR ?? '/output';
 
+// Gate caps, named so the numbers in the buildDossier call below read as policy.
+const DOSSIER_TEXT_MAX_BYTES = 163840; // dossier text cap: 160 KiB
+const SCREENSHOT_MAX_BYTES = 262144; // per-screenshot cap: 256 KiB (max 4)
+const APP_MAX_FILES = 993; // app/ file count cap
+const APP_MAX_BYTES = 16777216; // app/ size cap: 16 MiB
+
 mkdirSync(outDir, { recursive: true });
 cpSync(join(root, 'app'), join(outDir, 'app'), { recursive: true });
 mkdirSync(join(outDir, 'screenshots'), { recursive: true });
@@ -32,9 +38,9 @@ if (existsSync(join(root, 'screenshots'))) {
 writeFileSync(
   join(outDir, 'dossier.json'),
   buildDossier(outDir, {
-    text_max_bytes: 163840,
-    screenshots: { max: 4, max_bytes: 262144 },
-    app_max_files: 993,
-    app_max_bytes: 16777216,
+    text_max_bytes: DOSSIER_TEXT_MAX_BYTES,
+    screenshots: { max: 4, max_bytes: SCREENSHOT_MAX_BYTES },
+    app_max_files: APP_MAX_FILES,
+    app_max_bytes: APP_MAX_BYTES,
   }),
 );
